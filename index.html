@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lice, nossa galáxia</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #000000, #1a1a1a);
+      color: #f0e68c;
+      overflow-x: hidden;
+    }
+
+    .tela-login {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: radial-gradient(#1a1a1a, #000000);
+      color: #ffd700;
+    }
+
+    .tela-login input {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+      margin-top: 10px;
+    }
+
+    .tela-login button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .erro {
+      color: red;
+      margin-top: 10px;
+    }
+
+    #conteudo {
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header, main > section, footer {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header {
+      background-color: #000;
+      background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #ffd700;
+    }
+
+    header p {
+      font-style: italic;
+      color: #f0e68c;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .linha-do-tempo li {
+      margin-bottom: 20px;
+      list-style: none;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .galeria img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #ffd700;
+      transition: transform 0.3s;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      background-color: #111;
+      font-size: 1.1rem;
+      flex-direction: column;
+    }
+
+    .botao-musica {
+      margin-top: 20px;
+      background: #ffd700;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .estrelas {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .estrela {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      animation: cair 5s linear infinite;
+      opacity: 0.8;
+      border-radius: 50%;
+    }
+
+    @keyframes cair {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+
+    .animar-entrada {
+      animation: slideFade 1s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes slideFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #paragrafoCarta {
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="estrelas" id="estrelas"></div>
+
+  <!-- Tela de login -->
+  <div class="tela-login" id="login">
+    <h2>Dica: Primeiro filme que vimos inteiro em um só dia</h2>
+    <input type="text" id="senha" placeholder="Digite a senha..." />
+    <button onclick="verificarSenha()">Entrar</button>
+    <div class="erro" id="erro"></div>
+  </div>
+
+  <!-- Conteúdo do site -->
+  <div id="conteudo">
+    <header class="animar-entrada">
+      <h1>O amor é composto de uma só alma habitando dois corpos</h1>
+      <p>Mesmo em galáxias diferentes, a Força nos uniu.</p>
+    </header>
+
+    <main>
+      <section class="animar-entrada">
+        <h2>Nossa Jornada</h2>
+        <ul class="linha-do-tempo">
+          <li>✨ O TTK nos conectou (o algoritmo da Força agiu)</li>
+          <li>💬 Conversas infinitas, do bom dia ao boa noite</li>
+          <li>🎮 Jogos, risadas, trends e confissões</li>
+          <li>✈️ Um encontro vindo aí... e um universo de planos juntos</li>
+          <li>🗓️ 09/06/2025 — quem e Camy Call ? no TTK</li>
+          <li>❤️ 10/06/2025 — Primeira call</li>
+          <li>📦 25/07/2025 — Nosso primeiro encontro</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>🌠 Carta para você, Lice</h2>
+<p id="paragrafoCarta">
+Vamos lá, minha Lice. Seguinte: eu ainda te conheço há pouco tempo, mas estou aqui escrevendo essa carta (na mão... quer dizer, no teclado 😅). Te conhecer... o que foi isso, hein? 🤔 Você apareceu num momento em que eu não estava procurando ninguém. Eu jurava que o amor não existia mais, já tinha até desistido dele.  
+<br><br>
+Mas aí você chegou e me mostrou que é justamente nesses momentos que a gente não deve desistir. Então, obrigado. Obrigado por ter feito tudo isso, por estar aqui comigo e por me fazer sentir amado e respeitado.  
+<br><br>
+Não vou mentir: às vezes você quase me mata do coração, né? Mas é que meu passado nesse lance de amor foi meio bagunçado, nunca tive muita sorte. Só que, sendo bem sincero, garota... você é simplesmente perfeita.  
+<br><br>
+E eu espero que o nosso encontro seja único — do jeitinho que você é pra mim: inesquecível.
+</p>
+      </section>
+
+      <section class="animar-entrada">
+        <h2>Lice, você sabia?</h2>
+        <p>🌟 O sabre de luz da Padmé era azul — mesma cor do céu que vai te receber aqui no Rio.</p>
+        <p>🎥 Star Wars foi inspirado por ideias de amor, honra, conexão e destino — como nós.</p>
+        <p>🚀 A frase "Que a Força esteja com você" nunca fez tanto sentido como agora.</p>
+      </section>
+
+      <section class="animar-entrada">
+        <h2>Galeria Intergaláctica</h2>
+        <div class="galeria">
+          <img src="foto/Imagem do WhatsApp de 2025-05-31 à(s) 11.11.37_6823bf12.jpg" alt="Olhos da Lice" />
+          <img src="foto/sorr.jpg" alt="Sorriso da Lice" />
+          <img src="foto/rosto.jpg" alt="Trend ou momento marcante" />
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Essa galáxia é imensa, mas a minha sorte foi ter encontrado você, Lice.</p>
+      <button class="botao-musica" onclick="tocarMusica()">Tocar nossa música</button>
+      <audio id="musica" src="musica/John Legend - All of Me (Official Video).mp3"></audio>
+    </footer>
+  </div>
+
+  <script>
+    let darthAudio = null;
+
+    function verificarSenha() {
+      const senha = document.getElementById('senha').value.toLowerCase().trim();
+      const erro = document.getElementById('erro');
+
+      if (senha === "shrek") {
+        document.getElementById('login').style.display = "none";
+        document.getElementById('conteudo').style.display = "block";
+        darthAudio = new Audio('musica/Imperial March - Darth Vader Theme !!!.mp3');
+        darthAudio.play();
+      } else {
+        erro.textContent = "Senha incorreta, tente novamente!";
+      }
+    }
+
+    function tocarMusica() {
+      const musica = document.getElementById('musica');
+      if (darthAudio && !darthAudio.paused) {
+        darthAudio.pause();
+        darthAudio.currentTime = 0;
+      }
+      musica.play();
+    }
+
+    function criarEstrelas(qtd = 100) {
+      const container = document.getElementById("estrelas");
+      for (let i = 0; i < qtd; i++) {
+        const estrela = document.createElement("div");
+        estrela.classList.add("estrela");
+        estrela.style.left = `${Math.random() * 100}vw`;
+        estrela.style.animationDuration = `${2 + Math.random() * 4}s`;
+        estrela.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(estrela);
+      }
+    }
+
+    criarEstrelas();
+  </script>
+</body>
+</html>
